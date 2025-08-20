@@ -1,8 +1,7 @@
 {
   "name": "reactcdn",
   "version": "1.0.0",
-  "description": "Learning React Vai CDN First",
-  "main": "app.js",
+  "description": "Learning React Via CDN First",
   "scripts": {
     "test": "jest"
   },
@@ -13,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.15.4"
-  }
+  },
+  "browserslist": [
+    "last 3 versions"
+  ]
 }

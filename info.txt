@@ -110,9 +110,100 @@
        * Keeps GitHub repo clean and lightweight
 
 
-11. Parcel
-- HMR = Hot Module Replacement
-- Dev Build
-- Local Server
-- File Watching Algorithm - written in C++
-- 
+11. WHAT IS PARCEL?
+   Parcel is a ZERO-CONFIGURATION web application bundler.
+   It provides modern build features without requiring manual setup.
+
+   FEATURES:
+     - DEV BUILD:
+         * Fast builds optimized for development
+         * Auto-rebuild on file changes
+     - LOCAL SERVER:
+         * Runs a local development server with live preview
+     - HMR (HOT MODULE REPLACEMENT):
+         * Updates code in the browser without a full page reload
+     - FILE WATCHING ALGORITHM:
+         * Written in C++ for high performance
+     - FASTER BUILDS:
+         * Efficient incremental rebuilds
+     - CACHING:
+         * Uses .parcel-cache to store previous builds and speed up future builds
+     - IMAGE OPTIMIZATION:
+         * Automatically compresses and optimizes images
+     - MINIFICATION:
+         * Removes unnecessary characters/spaces in production
+     - BUNDLING:
+         * Combines multiple files (JS, CSS, images) into fewer optimized files
+     - COMPRESSION:
+         * Compresses final output for smaller size
+     - CONSISTENT HASHING:
+         * Ensures cache-busting by generating unique hashes per build
+     - CODE SPLITTING:
+         * Breaks large code into smaller chunks (loaded only when needed)
+     - DIFFERENTIAL BUNDLING:
+         * Creates separate bundles for modern and older browsers
+     - DIAGNOSTIC:
+         * Detailed error messages with solutions
+     - ERROR HANDLING:
+         * Clear error overlay in browser + console logs
+     - HTTPS:
+         * Supports serving over HTTPS locally
+     - SUPPORT FOR OLDER BROWSERS:
+         * Automatically transpiles code using Babel and polyfills
+     - TREE SHAKING:
+         * Removes unused/dead code from the final bundle
+     - SEPARATE DEV AND PROD BUNDLES:
+         * Development bundle = fast, uncompressed, easy debugging
+         * Production bundle = optimized, compressed, ready for deployment
+
+
+12. PARCEL AND "main" FIELD IN PACKAGE.JSON
+   - By default, package.json may contain a "main" entry (e.g., "index.html").
+   - To start Parcel correctly, we REMOVE the "main" field.
+   - Why?
+       * Parcel needs to directly use the HTML entry point (index.html)
+       * If "main" is defined, it may conflict with Parcel’s entry resolution.
+
+
+13. WHAT IS "DIST" FOLDER AND ".PARCEL-CACHE"?
+   - DIST FOLDER:
+       * Short for "distribution"
+       * Contains the final output (bundled, optimized production files)
+       * Used for deployment
+   - .PARCEL-CACHE:
+       * Hidden folder created by Parcel
+       * Stores cache of previous builds
+       * Greatly improves rebuild performance
+       * Can be safely deleted (Parcel will regenerate it)
+
+
+14. WHAT DOES "npx parcel build index.html" DO?
+   - Runs a PRODUCTION BUILD of your project
+   - Process:
+       * Bundles all files (JS, CSS, images, etc.)
+       * Minifies and compresses them
+       * Outputs a production-ready build
+   - RESULT:
+       * Final dist/ folder typically contains just 3 main files:
+           1. index.html
+           2. single .css file
+           3. single .js file
+       * Ensures optimized, fast-loading website for deployment
+
+
+15. WHAT IS "BROWSERSLIST"?
+   - Browserslist is a tool to specify which browsers your project should support.
+   - Example config in package.json:
+       "browserslist": [
+         "last 2 versions",
+         "> 1%",
+         "not dead"
+       ]
+   - PURPOSE:
+       * Helps tools like Babel, Autoprefixer, and Parcel decide how to transpile/optimize code
+       * Ensures compatibility with specified browsers (NOTE : You Can Also Be Country Specific)
+   - REALTIME CHECK:
+       * You can test your config at: https://browserslist.dev
+       * Example "last 2 versions" → means last 2 versions of all major browsers
+
+
