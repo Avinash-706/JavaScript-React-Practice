@@ -1,0 +1,17 @@
+{
+  "name": "reactmodule",
+  "version": "1.0.0",
+  "description": "Learning React using Import React But Not NPX CREATE APP",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Avinash Dhanuka",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}

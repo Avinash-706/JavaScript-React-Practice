@@ -1,4 +1,4 @@
 **/node_modules
-ReactCDN/dist
-ReactCDN/.parcel-cache
+**/dist
+**/.parcel-cache
 # Ignore node_modules directory
