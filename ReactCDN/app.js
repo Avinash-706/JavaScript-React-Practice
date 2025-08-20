@@ -12,7 +12,7 @@ const parent = React.createElement("div", { id: "parent" },
         React.createElement("div", { id: "child"},
             [
             React.createElement("div", { id: "child"}, "Child H1 - CHILD"),
-            React.createElement("div", { id: "child"}, "Child H2 - CHILD"),
+            React.createElement("h1", { id: "child"}, "Child H2 - CHILD"),
             ],
             "Child H1 - PARENT"
         ),

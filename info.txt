@@ -1,24 +1,84 @@
 1. WHAT IS A CDN?
-// A CDN (Content Delivery Network) is a network of distributed servers 
-// that deliver web content (like scripts, stylesheets, images) to users 
-// from the server closest to them. 
-// Purpose: Faster load times and better performance for global users.
+   A CDN (Content Delivery Network) is a network of distributed servers 
+   that deliver web content (like scripts, stylesheets, images) to users 
+   from the server closest to them. 
+   Purpose: Faster load times and better performance for global users.
 
 
 2. WHAT IS 'crossorigin' IN A CDN LINK?
-// The 'crossorigin' attribute is used when loading resources (like React from a CDN) 
-// that may come from a different origin (domain).
-// It tells the browser how to handle CORS (Cross-Origin Resource Sharing).
-// It ensures that certain requests (like fetching source maps or modules) 
-// are allowed and won't be blocked by security restrictions.
+   The 'crossorigin' attribute is used when loading resources (like React from a CDN) 
+   that may come from a different origin (domain).
+   It tells the browser how to handle CORS (Cross-Origin Resource Sharing).
+   It ensures that certain requests (like fetching source maps or modules) 
+   are allowed and won't be blocked by security restrictions.
 
 
 
 3. Syntax: const element = React.createElement(type, props, children)
                             ↓
-// The {} is where we pass the 'props' (attributes).
-// Example: React.createElement("h1", { className: "title" }, "Hello World");
-// So inside {} we can define all the HTML attributes for that element.
+   The {} is where we pass the 'props' (attributes).
+   Example: React.createElement("h1", { className: "title" }, "Hello World");
+   So inside {} we can define all the HTML attributes for that element.
 
 
-const parent = React.createElement("div", {id : "parent"}, "React.createElement("div", {id : "child"}, "Hello World"), Hello World");
+   const parent = React.createElement("div", {id : "parent"}, "React.createElement("div", {id : "child"}, "Hello World"), Hello World");
+
+
+
+4. WHAT DOES 'npm' STAND FOR?
+   'npm' is commonly referred to as 'Node Package Manager'.
+   BUT — officially, 'npm' doesn’t stand for anything now.
+   Originally, it stood for 'Node Package Manager' because it manages packages for Node.js,
+   but the maintainers say it's just 'npm' — not an acronym anymore.
+
+
+5. WHAT DOES 'npx create-react-app' DO?
+   'npx' is a tool that runs Node packages without needing to install them globally.
+   'create-react-app' is a CLI tool (bundler setup) that:
+     - Sets up a new React project
+     - Configures Webpack and Babel behind the scenes
+     - Gives you a working React app with zero config
+
+   Other modern BUNDLERS are:
+     - Vite (faster and lightweight)
+     - Parcel
+     - Snowpack
+     - Webpack
+
+    Babel - NOT a module bundler.
+    It is a JavaScript compiler, primarily used for transforming modern JavaScript code
+    into a format that is compatible with older browsers and environments. While it can
+    be used alongside module bundlers like Webpack or Parcel, its core function is to
+    transpile code, not to bundle it. 
+
+    So, 'npx create-react-app' is NOT itself the BUNDLER —
+    it sets up a project with Webpack and Babel configured for you.
+
+
+
+
+6. Syntax: npm install -D parcel
+ The '-D' flag is short for '--save-dev'.
+
+ ✔️ It means you are installing a **development dependency**.
+ These packages are needed only during development (like bundlers, linters, or testing tools)
+ and are NOT included in the final production build.
+
+ So, there are 2 main types of dependencies:
+   1️⃣ Dependencies (Normal)
+       - Installed with: npm install <package>
+       - Listed under: "dependencies" in package.json
+       - Needed in production (e.g., React, Express)
+
+   2️⃣ Dev Dependencies (Development)
+       - Installed with: npm install -D <package> OR npm install --save-dev <package>
+       - Listed under: "devDependencies" in package.json
+       - Used only during development (e.g., Parcel, Webpack, Babel, ESLint)
+
+
+7. Parcel
+- HMR = Hot Module Replacement
+- Dev Build
+- Local Server
+- File Watching Algorithm - written in C++
+- 
