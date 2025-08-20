@@ -13,7 +13,6 @@
    are allowed and won't be blocked by security restrictions.
 
 
-
 3. Syntax: const element = React.createElement(type, props, children)
                             ↓
    The {} is where we pass the 'props' (attributes).
@@ -22,7 +21,6 @@
 
 
    const parent = React.createElement("div", {id : "parent"}, "React.createElement("div", {id : "child"}, "Hello World"), Hello World");
-
 
 
 4. WHAT DOES 'npm' STAND FOR?
@@ -55,28 +53,64 @@
     it sets up a project with Webpack and Babel configured for you.
 
 
-
-
 6. Syntax: npm install -D parcel
  The '-D' flag is short for '--save-dev'.
 
- ✔️ It means you are installing a **development dependency**.
+ It means you are installing a **development dependency**.
  These packages are needed only during development (like bundlers, linters, or testing tools)
  and are NOT included in the final production build.
 
  So, there are 2 main types of dependencies:
-   1️⃣ Dependencies (Normal)
+   1. Dependencies (Normal)
        - Installed with: npm install <package>
        - Listed under: "dependencies" in package.json
        - Needed in production (e.g., React, Express)
 
-   2️⃣ Dev Dependencies (Development)
+   2. Dev Dependencies (Development)
        - Installed with: npm install -D <package> OR npm install --save-dev <package>
        - Listed under: "devDependencies" in package.json
        - Used only during development (e.g., Parcel, Webpack, Babel, ESLint)
 
 
-7. Parcel
+7. CARET ^ VS TILDE ~
+   - Caret ( ^ ) allows updates that do not change the first non-zero version number.
+     Example: ^1.2.3 → can install versions 1.x.x but not 2.0.0
+   - Tilde ( ~ ) allows updates only to the last digit (PATCH version).
+     Example: ~1.2.3 → can install versions 1.2.x but not 1.3.0
+   USE:
+     - ^ is more flexible (used commonly for libraries to get bug fixes & minor features)
+     - ~ is more strict (used when you want tighter control over updates)
+
+
+8. PACKAGE.JSON VS PACKAGE-LOCK.JSON
+   - package.json:
+       * Contains project metadata (name, version, scripts, dependencies)
+       * Stores APPROXIMATE versions (e.g., ^1.2.3 or ~1.2.3)
+       * Does not update automatically
+   - package-lock.json:
+       * Records the EXACT versions installed
+       * Ensures consistency across different environments
+       * Updates automatically when dependencies change
+   PURPOSE:
+       - Both files together ensure reproducible builds while allowing flexibility in upgrades.
+
+
+9. TRANSITIVE DEPENDENCIES
+   - These are dependencies required by your dependencies.
+   - Example: Parcel internally depends on Babel (you install Parcel, Babel comes indirectly).
+   - npm automatically installs these transitive dependencies for you.
+
+
+10. WHY NODE_MODULES IS IN .GITIGNORE
+   - node_modules contains all installed packages (can be very large in size)
+   - If package.json and package-lock.json exist, node_modules can always be regenerated using `npm install`
+   - Reason:
+       * Saves storage and reduces repository size
+       * Avoids platform-specific conflicts
+       * Keeps GitHub repo clean and lightweight
+
+
+11. Parcel
 - HMR = Hot Module Replacement
 - Dev Build
 - Local Server

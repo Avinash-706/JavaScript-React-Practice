@@ -1,0 +1,17 @@
+{
+  "name": "reactcdn",
+  "version": "1.0.0",
+  "description": "Learning React Vai CDN First",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Avinash Dhanuka",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  }
+}
