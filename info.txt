@@ -308,3 +308,116 @@
    - GOOD PRACTICES:
        * Always indent nested JSX properly
        * Use ( ) for better readability and to avoid parsing errors
+
+
+20. REACT ELEMENT VS REACT FUNCTIONAL COMPONENT (BASIC + DEEP DIVE)
+
+   - REACT ELEMENT:
+       * Plain JavaScript object representation of a DOM element
+       * Created using JSX or React.createElement()
+       * Example:
+           const heading = (
+             <h1 className="head" tabIndex="5">
+               React Using JSX
+             </h1>
+           );
+       * Characteristics:
+           - Simple, static UI representation
+           - Cannot have state or lifecycle methods
+           - Immutable (cannot be changed after creation)
+       * INTERNAL WORKING:
+           - JSX → Babel transpiles → React.createElement() → ReactElement (JS Object)
+           - Stored in Virtual DOM
+           - React reconciles Virtual DOM with real DOM efficiently
+
+   - REACT FUNCTIONAL COMPONENT:
+       * JavaScript function returning JSX (React elements)
+       * Must start with CAPITAL LETTER
+       * Rendered using: root.render(<HeadingComponent />)
+       * Example:
+           const HeadingComponent = () => {
+             const message = "React Functional Component";
+             console.log(message);  // Can run JS code
+             return <h1 className="heading">{message}</h1>;
+           };
+       * Can:
+           - Compose multiple elements
+           - Call other functions, constants, or console.log inside JSX
+           - Accept props to make reusable components
+       * Rendering variations:
+           <Title />  OR  <Title></Title>  OR  {Title()}
+
+   - KEY DIFFERENCES:
+       React Element         | React Functional Component
+       -------------------- | ---------------------------
+       Static representation | Dynamic & reusable
+       Immutable object      | Function returning JSX
+       JSX or createElement  | Can include logic & props
+       No state/lifecycle    | Can use hooks (useState, useEffect)
+       One-time creation     | Can be reused multiple times
+       Virtual DOM object    | Can trigger Virtual DOM updates
+
+   - INTERNAL INSIGHTS:
+       * Functional component executes every render, returns new React Elements
+       * React Elements themselves are lightweight and describe “what to render”
+       * Reconciliation ensures minimal DOM updates for performance
+
+
+21. COMPONENT COMPOSITION (BASIC + DEEP DIVE)
+
+   - DEFINITION:
+       * Combining multiple components together to form complex UIs
+       * One component can be nested inside another
+       * Promotes modular and reusable architecture
+
+   - EXAMPLE:
+       const Button = () => <button>Click Me</button>;
+       const Card = () => (
+         <div className="card">
+           <h2>Card Title</h2>
+           <Button />   // Composed inside Card
+         </div>
+       );
+
+   - PURPOSE:
+       - Reusability
+       - Cleaner code
+       - Modular architecture
+       - Scalability for large applications
+
+   - ADVANCED CONCEPTS:
+       * Props Drilling: Passing data from parent to child components
+       * Children Prop: Nesting components dynamically inside others
+       * Higher-Order Components (HOC): Functions that take components and return new components
+       * Context API: Provides global state without prop drilling
+       * Component Lifecycle (via hooks in functional components)
+
+
+22. CROSS-SITE SCRIPTING (XSS) ATTACKS IN REACT (BASIC + DEEP DIVE)
+
+   - DEFINITION:
+       * XSS occurs when attackers inject malicious scripts into your web app
+       * Risk: Manipulating DOM, stealing cookies, running unauthorized code
+
+   - EXAMPLE RISK:
+       const data = api.getData();
+       {data}   // If data = "<script>alert('Hacked!')</script>"
+
+   - REACT PROTECTION:
+       * JSX automatically ESCAPES any dynamic content
+       * Scripts or HTML tags injected via data are treated as plain text
+       * Example:
+           const userInput = "<script>alert('Hacked!')</script>";
+           return <div>{userInput}</div>;
+           // Browser renders the script as TEXT, NOT executable
+
+   - ADDITIONAL SAFEGUARDS:
+       * dangerouslySetInnerHTML: Only use when necessary, sanitize input first
+       * Validate & sanitize API responses before rendering
+       * Use libraries like DOMPurify for extra safety
+       * Keep React and dependencies updated for latest security patches
+
+   - WHY REACT IS SAFE BY DEFAULT:
+       * JSX dynamic content → always escaped
+       * Virtual DOM ensures script injection cannot modify real DOM unexpectedly
+       * Explicit HTML injection is only possible via dangerouslySetInnerHTML
